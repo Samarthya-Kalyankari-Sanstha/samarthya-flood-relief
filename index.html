@@ -7,6 +7,7 @@
 <title>Samarthya — Marathwada Flood Relief 2025 | Impact Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -258,6 +259,85 @@ canvas#pdmImpact   { max-height:130px !important; margin:6px 0; }
 .g2>.card{display:flex;flex-direction:column}
 .g2>.card canvas{flex:1;min-height:140px}
 </style>
+
+<!-- Next Step tab styles (scoped to #pg-nextstep; no effect on other tabs) -->
+<style id="nextstep-css">
+:root{
+  --nx-forest:#1E4620;   /* deep forest green: headings, grounding */
+  --nx-leaf:#2E7D32;     /* mid leaf green: accents, timeline */
+  --nx-mint:#4CAF50;     /* fresh mint: actions, highlights */
+  --nx-moss:#558B2F;     /* olive moss: secondary accents */
+  --nx-fern:#81C784;     /* light fern */
+  --nx-sage:#F1F8F5;     /* soft sage background tint */
+  --nx-leaf-lt:#E5F1E6;  /* light leaf fill for chips */
+}
+.nx-mr{font-family:'Noto Sans Devanagari','DM Sans',sans-serif}
+
+/* ---- palette rules as specified (scoped, no effect on other tabs) ---- */
+#pg-nextstep{
+  background-color:#F1F8F5;      /* Soft Sage Background */
+  color:#2E3B34;
+  border-radius:var(--r);
+}
+#pg-nextstep h2,#pg-nextstep h3{
+  color:#1E4620;                 /* Deep Forest Green for Titles */
+}
+#pg-nextstep .action-btn{
+  background-color:#4CAF50;      /* Fresh Mint Green for CTA */
+  color:#FFFFFF;
+}
+#pg-nextstep .metric-card{
+  border-top:4px solid #4CAF50;
+  background:#FFFFFF;
+}
+
+/* mapping the same intent onto the dashboard's component classes */
+#pg-nextstep .ey{color:var(--nx-leaf)}
+#pg-nextstep .pt,#pg-nextstep .ct,#pg-nextstep .chs-title{color:#1E4620}
+#pg-nextstep .sc{border-top:4px solid #4CAF50;background:#FFFFFF}
+#pg-nextstep .sc::after{display:none}
+#pg-nextstep .chs-card{border-top:4px solid #4CAF50}
+#pg-nextstep .princ{background:var(--nx-forest)}
+#pg-nextstep .tl::before{background:var(--nx-leaf)}
+#pg-nextstep .tld{background:var(--nx-leaf);box-shadow:0 0 0 1.5px var(--nx-leaf)}
+#pg-nextstep .tldate{color:var(--nx-leaf)}
+#pg-nextstep .ibox.green{background:var(--nx-leaf-lt);border-left-color:var(--nx-leaf);color:var(--nx-forest)}
+
+/* forest green info box (replaces navy in this tab) */
+.ibox.nx-forest{background:var(--nx-leaf-lt);border-left:3px solid var(--nx-forest);color:var(--nx-forest)}
+
+/* title block */
+.nx-sub{font-family:'Fraunces',serif;font-style:italic;font-size:17px;color:var(--nx-leaf);margin-bottom:6px}
+.nx-title-mr{font-family:'Noto Sans Devanagari','DM Sans',sans-serif;font-size:14.5px;font-weight:600;color:var(--nx-forest);margin-bottom:14px;line-height:1.5}
+
+/* planned chip: green-toned status */
+.nx-planned{background:var(--nx-leaf-lt);color:var(--nx-forest);font-size:10px;font-weight:600;padding:4px 10px;border-radius:20px;border:1px solid rgba(30,70,32,.25);letter-spacing:.04em;white-space:nowrap;display:inline-block;margin-bottom:10px}
+
+/* horizontal section dividers */
+.nx-div{border:none;border-top:1px solid var(--border2);margin:30px 0 26px}
+.nx-div-labeled{display:flex;align-items:center;gap:14px;margin:34px 0 20px}
+.nx-div-labeled::before,.nx-div-labeled::after{content:'';flex:1;border-top:1px solid #C9DCD0}
+.nx-div-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--nx-moss);white-space:nowrap}
+
+/* Marathi subtitle inside .princ */
+.nx-princ-mr{font-family:'Noto Sans Devanagari','DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.85);margin-bottom:6px}
+
+/* activity descriptions + tags */
+.nx-act-desc{font-size:12.5px;color:var(--t2);line-height:1.55}
+.nx-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.nx-tag{font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--nx-forest);background:var(--nx-leaf-lt);padding:2px 8px;border-radius:10px}
+
+/* CTA band */
+.nx-cta{background:linear-gradient(135deg,var(--nx-forest) 0%,#25551F 55%,var(--nx-leaf) 100%);border-radius:var(--r);padding:34px 30px;color:white;text-align:center;margin:6px 0 10px;box-shadow:var(--sh)}
+.nx-cta-t{font-family:'Fraunces',serif;font-size:26px;line-height:1.2;margin-bottom:6px}
+.nx-cta-mr{font-family:'Noto Sans Devanagari','DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.88);margin-bottom:10px}
+.nx-cta-d{font-size:13px;color:rgba(255,255,255,.78);max-width:640px;margin:0 auto 18px;line-height:1.6}
+.nx-btn{display:inline-block;padding:11px 28px;border-radius:24px;font-size:13.5px;font-weight:600;text-decoration:none;font-family:'DM Sans',sans-serif;transition:all .15s;border:1.5px solid transparent}
+.nx-btn.pri{background:var(--nx-mint);color:white}
+.nx-btn.pri:hover{background:#43A047;transform:translateY(-1px)}
+.nx-btn:focus-visible{outline:3px solid var(--nx-fern);outline-offset:2px}
+@media(max-width:520px){.nx-cta-t{font-size:21px}}
+</style>
 </head>
 <body>
 
@@ -289,6 +369,7 @@ canvas#pdmImpact   { max-height:130px !important; margin:6px 0; }
     <button class="nb" onclick="go('pdm',this)">PDM report</button>
     <button class="nb" onclick="go('chs',this)">CHS compliance</button>
     <button class="nb" onclick="go('context',this)">Context &amp; gallery</button>
+    <button class="nb" onclick="go('nextstep',this)">Next Step</button>
   </div>
 </nav>
 
@@ -1031,6 +1112,163 @@ canvas#pdmImpact   { max-height:130px !important; margin:6px 0; }
       <div style="padding:12px;background:var(--amber-lt);border-radius:8px;border-left:3px solid var(--amber)"><div style="font-weight:600;font-size:13px;color:var(--amber);margin-bottom:3px">Madat</div><div style="font-size:12px;color:var(--t2)">Relief &amp; rebuilding</div></div>
     </div>
   </div>
+</div>
+
+<!-- PAGE 9: NEXT STEP (Bharari Gender Justice Initiative) -->
+<div id="pg-nextstep" class="pg">
+
+  <span class="nx-planned">PLANNED · 2026–27</span>
+  <div class="ey">Samarthya thematic intervention · The next step 2026–27</div>
+  <div class="pt">Bharari (भरारी) Gender Justice Initiative</div>
+  <div class="nx-sub">From relief to resilience</div>
+  <div class="nx-title-mr">महिला नेतृत्वाची हवामान बदलास अनुकूल शेती: सकस अन्न व सन्मान प्रकल्प</div>
+  <div class="pd">The ration kits fed 3,000 families for weeks. The next task is to help families feed themselves, and feed themselves well, for years. Over twelve months, 150 women farmers across 17 habitations of Omerga block will lead a climate-resilient, nutrition-first recovery of their own rainfed farms.</div>
+
+  <div class="sg">
+    <div class="sc r metric-card"><div class="sl">Women farmers</div><div class="sn">150</div><div class="ss">Priority: single women, marginal land</div></div>
+    <div class="sc n metric-card"><div class="sl">Habitations</div><div class="sn">17</div><div class="ss">Omerga block, all flood-affected</div></div>
+    <div class="sc g metric-card"><div class="sl">Seasons covered</div><div class="sn">2</div><div class="ss">Kharif 2026 + Rabi 2026–27</div></div>
+    <div class="sc a metric-card"><div class="sl">Rainfed crops</div><div class="sn">9</div><div class="ss">Millets, pulses, oilseeds</div></div>
+    <div class="sc b metric-card"><div class="sl">Community seed bank</div><div class="sn">1</div><div class="ss">Women-managed</div></div>
+  </div>
+
+  <div class="ibox nx-forest"><strong>"Seeds, livelihoods, and soil restoration."</strong> This is what 111 households told us they needed next, in the April 2026 Post-Distribution Monitoring. This page is what we are doing about it.</div>
+
+  <div class="nx-div-labeled"><span class="nx-div-label">Why this, why now</span></div>
+
+  <!-- TWO PROBLEMS, ONE ANSWER -->
+  <div class="g2">
+    <div class="card" style="margin-bottom:0">
+      <div class="ct">Problem 1 · Climate</div>
+      <div class="cs">What the relief data showed</div>
+      <div class="chs-metric"><span class="chs-mk">Complete crop loss (soybean, onion, pulses)</span><span class="chs-mv">78 of 111 PDM respondents</span></div>
+      <div class="chs-metric"><span class="chs-mk">Irrigation on participating plots</span><span class="chs-mv">None, fully rain-dependent</span></div>
+      <div class="chs-metric"><span class="chs-mk">Single-woman-headed households</span><span class="chs-mv">53.15% of relief beneficiaries</span></div>
+      <div class="ibox red"><strong>One failed monsoon away from crisis.</strong> Marginal rainfed plots carry the region's climate risk with the fewest buffers.</div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="ct">Problem 2 · Nutrition</div>
+      <div class="cs">The crisis behind the crisis</div>
+      <div class="chs-metric"><span class="chs-mk">Anaemia &amp; undernutrition</span><span class="chs-mv">Widespread among women, girls &amp; children</span></div>
+      <div class="chs-metric"><span class="chs-mk">Cash-crop-first cultivation</span><span class="chs-mv">Few vegetables, pulses &amp; millets on the plate</span></div>
+      <div class="chs-metric"><span class="chs-mk">Who eats last</span><span class="chs-mv">The women who grow the food</span></div>
+      <div class="ibox red"><strong>Hidden hunger.</strong> When rainfed crops fail, dietary diversity is cut first, and women, adolescent girls and children are affected first.</div>
+    </div>
+  </div>
+  <div class="ibox green" style="margin-top:14px"><strong>One answer.</strong> Climate risk and hidden hunger are the same problem. We are answering both with one intervention: climate-resilient farming that puts nutrient-rich food back on the plate, led by the women who grow it.</div>
+
+  <div class="nx-div-labeled"><span class="nx-div-label">The project</span></div>
+
+  <!-- PROJECT PANEL -->
+  <div class="g2">
+    <div class="card" style="margin-bottom:0">
+      <div class="ct">Women-Led Climate Resilient Farming for Food and Dignity</div>
+      <div class="cs">One-year women-led recovery initiative</div>
+      <div style="font-size:13px;color:var(--t2);line-height:1.65">Women play a central role in farming across the habitations, yet are rarely recognised as farmers or decision-makers. Over twelve months spanning the kharif and rabi seasons, 150 women, many of them single women cultivating small rainfed plots, will lead the recovery of their own food systems: sowing bio-fortified and traditional seed, farming organically, planting fruit trees on their bunds, building a community seed bank, and putting diverse, nutrient-rich food back on the family plate.</div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="ct">At a glance</div>
+      <div class="cs">Project facts</div>
+      <div class="chs-metric"><span class="chs-mk">Period</span><span class="chs-mv">1 May 2026 – 30 April 2027</span></div>
+      <div class="chs-metric"><span class="chs-mk">Seasons</span><span class="chs-mv">Kharif 2026 + Rabi 2026–27</span></div>
+      <div class="chs-metric"><span class="chs-mk">Where</span><span class="chs-mv">17 habitations · Omerga block · Dharashiv (Osmanabad)</span></div>
+      <div class="chs-metric"><span class="chs-mk">Who</span><span class="chs-mv">150 women · De-notified Tribes (DNTs)</span></div>
+      <div class="chs-metric"><span class="chs-mk">Priority</span><span class="chs-mv">Single women · marginal land · rain-dependent</span></div>
+      <div class="chs-metric"><span class="chs-mk">Objectives</span><span class="chs-mv">Climate resilience + nutrition security</span></div>
+    </div>
+  </div>
+
+  <div class="nx-div-labeled"><span class="nx-div-label">The intervention: four pillars, six lines of work</span></div>
+
+  <!-- PILLARS -->
+  <div class="princ-grid">
+    <div class="princ"><div class="princ-icon">🥗</div><div class="princ-title">Nutrition &amp; Health</div><div class="nx-princ-mr">पोषण व आरोग्य</div><div class="princ-desc">Bio-fortified crops, nutrition gardens and fruit trees put micronutrients on the plate for children, adolescent girls and women.</div></div>
+    <div class="princ"><div class="princ-icon">🌦️</div><div class="princ-title">Climate Resilience</div><div class="nx-princ-mr">हवामान बदलास अनुकूल शेती</div><div class="princ-desc">Rainfed-suited diversified cropping, organic soil care and pest management reduce risk on marginal plots.</div></div>
+    <div class="princ"><div class="princ-icon">👩‍🌾</div><div class="princ-title">Women's Agency</div><div class="nx-princ-mr">महिलांचे नेतृत्व</div><div class="princ-desc">150 women recognised as farmers and decision-makers: what to grow, what to eat, what to keep, what to sell.</div></div>
+    <div class="princ"><div class="princ-icon">🌱</div><div class="princ-title">Seeds &amp; Ecology</div><div class="nx-princ-mr">बियाणे व पर्यावरण</div><div class="princ-desc">A community seed bank, local seed preservation, and soil restored through bio-inputs.</div></div>
+  </div>
+
+  <!-- ACTIVITY CARDS (consolidated) -->
+  <div class="chs-grid">
+    <div class="chs-card"><div class="chs-title">🌾 Bio-fortified seed for rainfed crops</div><div class="nx-act-desc">Introducing bio-fortified and improved varieties of jowar, bajra, soybean, redgram, greengram, horsegram, groundnut, lentil and other pulses: micronutrient-dense staples suited to rain-only plots.</div><div class="nx-tags"><span class="nx-tag">Nutrition</span><span class="nx-tag">Climate</span></div></div>
+    <div class="chs-card"><div class="chs-title">🪱 Integrated Soil &amp; Pest Management (INM &amp; IPDM)</div><div class="nx-act-desc">Combining organic nutrient management (bio-fertilizers, compost, green manure) with natural pest control (bio-pesticides, traps, border crops) to restore soils damaged by floods while cutting input costs.</div><div class="nx-tags"><span class="nx-tag">Climate</span><span class="nx-tag">Ecology</span></div></div>
+    <div class="chs-card"><div class="chs-title">🥬 Household Nutrition Gardens &amp; Bund Horticulture</div><div class="nx-act-desc">Establishing diverse vegetable kitchen gardens alongside fruit-bearing trees planted directly on farm bunds. This integration ensures daily dietary diversity, future income, and active soil conservation on the same square foot of land.</div><div class="nx-tags"><span class="nx-tag">Nutrition</span><span class="nx-tag">Ecology</span><span class="nx-tag">Agency</span></div></div>
+    <div class="chs-card"><div class="chs-title">🏺 Community Seed Bank</div><div class="nx-act-desc">A women-managed store of climate-suited and traditional seed: the community's own request, answered in the community's own hands.</div><div class="nx-tags"><span class="nx-tag">Seeds</span><span class="nx-tag">Agency</span></div></div>
+    <div class="chs-card"><div class="chs-title">📚 Capacity Building</div><div class="nx-act-desc">Training, awareness sessions, exposure visits, demonstration plots and season-long handholding: knowledge that stays in the habitation after the project ends.</div><div class="nx-tags"><span class="nx-tag">Agency</span></div></div>
+    <div class="chs-card"><div class="chs-title">🤝 Healing &amp; Research</div><div class="nx-act-desc">Supportive group spaces for adolescent girls and young women affected by the floods, alongside independent research on the flood's impact on vulnerable communities for future advocacy.</div><div class="nx-tags"><span class="nx-tag">Agency</span></div></div>
+  </div>
+
+  <div class="nx-div-labeled"><span class="nx-div-label">Crops &amp; seasons: a full farming year, rainfed by design</span></div>
+
+  <!-- SEASONS -->
+  <div class="g3">
+    <div class="card" style="margin-bottom:0">
+      <div class="ct">Kharif 2026 <span class="nx-mr" style="text-transform:none;color:var(--t3);font-weight:400">· खरीप · जून–ऑक्टो</span></div>
+      <div class="cs">First season in the field</div>
+      <div class="chs-metric"><span class="chs-mk">Crops</span><span class="chs-mv">Bajra · soybean · redgram · greengram · groundnut</span></div>
+      <div class="chs-metric"><span class="chs-mk">Gardens</span><span class="chs-mv">Nutrition garden round 1</span></div>
+      <div class="chs-metric"><span class="chs-mk">Practices</span><span class="chs-mv">Seed treatment · germination test · INM · IPDM</span></div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="ct">Rabi 2026–27 <span class="nx-mr" style="text-transform:none;color:var(--t3);font-weight:400">· रब्बी · ऑक्टो–फेब्रु</span></div>
+      <div class="cs">Second season &amp; the seed bank</div>
+      <div class="chs-metric"><span class="chs-mk">Crops</span><span class="chs-mv">Jowar · horsegram · lentil · gram</span></div>
+      <div class="chs-metric"><span class="chs-mk">Gardens</span><span class="chs-mv">Nutrition garden round 2</span></div>
+      <div class="chs-metric"><span class="chs-mk">Practices</span><span class="chs-mv">Residual-moisture cultivation · compost · seed preservation</span></div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="ct">Year-round <span class="nx-mr" style="text-transform:none;color:var(--t3);font-weight:400">· वर्षभर</span></div>
+      <div class="cs">Trees, backyard &amp; allied work</div>
+      <div class="chs-metric"><span class="chs-mk">Horticulture</span><span class="chs-mv">Fruit trees on farm bunds</span></div>
+      <div class="chs-metric"><span class="chs-mk">Allied</span><span class="chs-mv">Backyard &amp; agri-allied activities</span></div>
+      <div class="chs-metric"><span class="chs-mk">Care</span><span class="chs-mv">Bund planting at monsoon onset · mulching · protection</span></div>
+    </div>
+  </div>
+
+  <div class="nx-div-labeled"><span class="nx-div-label">Who &amp; where: the most vulnerable first, again</span></div>
+
+  <!-- WHO & WHERE -->
+  <div class="sg">
+    <div class="sc r metric-card"><div class="sl">Women farmers</div><div class="sn">150</div><div class="ss">Selected through habitation-level consultation</div></div>
+    <div class="sc n metric-card"><div class="sl">Habitations</div><div class="sn">17</div><div class="ss">All flood-affected, Omerga block</div></div>
+    <div class="sc g metric-card"><div class="sl">Communities served</div><div class="sn" style="font-size:22px">100% DNTs</div><div class="ss">Laman Banjara, Berad, Masanjogi, Wadar and other vulnerable groups</div></div>
+    <div class="sc a metric-card"><div class="sl">Priority first</div><div class="sn" style="font-size:22px">Single women</div><div class="ss">Also the elderly, landless, marginal and undocumented farmers</div></div>
+  </div>
+
+  <div class="nx-div-labeled"><span class="nx-div-label">Twelve months: baseline to harvest</span></div>
+
+  <!-- TIMELINE -->
+  <div class="card">
+    <div class="tl" style="margin-top:6px">
+      <div class="tli"><span class="tld"></span><div class="tldate">May – Jun 2026 · Foundations</div><div class="tltxt">Habitation consultations and participant confirmation · healing sessions for adolescent girls and young women begin · <strong>baseline survey of all 150 women</strong> · kharif seed distribution with GPS-tagged acknowledgment.</div></div>
+      <div class="tli"><span class="tld"></span><div class="tldate">Jun – Oct 2026 · Kharif</div><div class="tltxt">Bio-fortified kharif sowing · soil and pest management training · demonstration plots established · nutrition gardens round 1 · fruit trees planted on farm bunds.</div></div>
+      <div class="tli"><span class="tld"></span><div class="tldate">Oct 2026 – Feb 2027 · Rabi</div><div class="tltxt">Rabi sowing (jowar and pulses) · exposure visits · seed selection and preservation · <strong>the community seed bank opens</strong> · season-long handholding continues.</div></div>
+      <div class="tli"><span class="tld"></span><div class="tldate">Feb – Mar 2027 · Measurement</div><div class="tltxt">Peer learning consolidation · <strong>endline survey of all 150 women</strong> · research analysis on flood impacts.</div></div>
+      <div class="tli" style="margin-bottom:0"><span class="tld"></span><div class="tldate">Apr 2027 · Evidence</div><div class="tltxt">Research report published and findings disseminated for advocacy · project close.</div></div>
+    </div>
+  </div>
+
+  <div class="nx-div-labeled"><span class="nx-div-label">Accountability measures</span></div>
+
+  <!-- MEASUREMENT -->
+  <div class="pd" style="margin-bottom:16px">Every kit in the relief operation was GPS-tagged, photographed and signed for. The recovery project holds itself to the same standard.</div>
+  <div class="chs-grid">
+    <div class="chs-card"><div class="chs-title">Baseline &amp; endline</div><div class="nx-act-desc">A structured digital survey at month 2 and month 11, allowing a true before-and-after comparison for every participant.</div></div>
+    <div class="chs-card"><div class="chs-title">Ten outcome indicators</div><div class="nx-act-desc">Documenting changes in food security, Household Dietary Diversity Score (HDDS), adoption of resilient practices, and women's decision-making.</div></div>
+    <div class="chs-card"><div class="chs-title">Verified distribution</div><div class="nx-act-desc">Every seed and sapling distribution is GPS-tagged, quantified, and photo-acknowledged.</div></div>
+    <div class="chs-card"><div class="chs-title">Paper + digital</div><div class="nx-act-desc">A printed master register with staff sign-off backs up every digital record.</div></div>
+  </div>
+
+  <hr class="nx-div">
+
+  <!-- CTA -->
+  <div class="nx-cta">
+    <div class="nx-cta-t">Support this work: fight climate change with those hit the most</div>
+    <div class="nx-cta-mr">हवामान बदलाविरुद्धच्या लढ्यात आमच्यासोबत या</div>
+    <div class="nx-cta-d">Every contribution goes to the field: bio-fortified seed, saplings for farm bunds, training for 150 women farmers, and a community seed bank owned by the habitations themselves, with the same GPS-tagged, photo-verified accountability we brought to the relief operation.</div>
+    <a class="nx-btn pri action-btn" href="mailto:admin@mahasamarthya.org?subject=Supporting%20Women-Led%20Climate%20Resilient%20Farming">Support this work</a>
+  </div>
+
 </div>
 
 <script>
