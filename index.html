@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" type="image/png" href="assets/LOGO_S.png">
 <title>Samarthya — Marathwada Flood Relief 2025 | Impact Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1139,7 +1139,7 @@ let mapBuilt=false;
 function initMap(){
   if(mapBuilt) return; mapBuilt=true;
   const map=L.map('map').setView([17.8379,76.5579],10);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:18}).addTo(map);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap contributors © CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
 
   fetch('map_data.json')
     .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
